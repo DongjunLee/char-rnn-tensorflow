@@ -1,0 +1,16 @@
+data:
+  data_dir: 'kor_char_rnn/data/lyricskor'
+  vocab_size: 1209
+model:
+  batch_size: 60
+  grad_clip: 5.0
+  input_keep_prob: 0.8
+  log_dir: 'logs'
+  num_layers: 3
+  output_keep_prob: 0.8
+  rnn_size: 700,
+  seq_length: 100
+train:
+  num_epochs: 1000
+  model_dir: 'save'
+  save_every: 1000
