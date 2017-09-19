@@ -46,7 +46,7 @@ class TextLoader():
         self.num_batches = int(self.tensor.size / (self.batch_size *
                                                    self.seq_length))
 
-    def make_X_and_y(self):
+    def make_train_and_test_set(self, train_size=0.8, test_size=0.2):
         self.num_batches = int(self.tensor.size / (self.batch_size *
                                                    self.seq_length))
 
@@ -54,6 +54,8 @@ class TextLoader():
         # let's give them a better error message
         if self.num_batches == 0:
             assert False, "Not enough data. Make seq_length and batch_size small."
+        if train_size + test_size > 1 :
+            assert False, "train_size and test_size are large. sum > 1"
 
         self.tensor = self.tensor[:self.num_batches * self.batch_size * self.seq_length]
         xdata = self.tensor
@@ -63,7 +65,17 @@ class TextLoader():
 
         self.X = xdata
         self.y = ydata
-        return self.X, self.y
+
+        train_length = int(len(self.X) * train_size)
+        test_length = int(len(self.X) * test_size)
+
+        train_X = self.X[train_length:]
+        train_y = self.y[train_length:]
+
+        test_X = self.X[:test_length]
+        test_y = self.y[:test_length]
+
+        return train_X, test_X, train_y, test_y
 
     def create_batches(self):
         self.num_batches = int(self.tensor.size / (self.batch_size *
