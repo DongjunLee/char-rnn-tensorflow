@@ -16,8 +16,8 @@ def format_variable(keys, vocab=None):
 
     def to_str(sequence):
         tokens = [
-            rev_vocab.get(x, "") for x in sequence]
-        return ' '.join(tokens)
+            rev_vocab.get(x, '') for x in sequence]
+        return ''.join(tokens)
 
     def format(values):
         result = []
