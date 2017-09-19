@@ -16,12 +16,12 @@ def main(mode):
     run_config = tf.contrib.learn.RunConfig(
             model_dir=Config.train.model_dir)
 
-    if mode == "train":
-        experiment.train(run_config, params)
-    elif mode == "evaluate":
-        experiment.evaluate()
-    elif mode == "predict":
-        experiment.predict()
+    tf.contrib.learn.learn_runner.run(
+        experiment_fn=experiment.experiment_fn,
+        run_config=run_config,
+        schedule=mode,
+        hparams=params
+    )
 
 
 if __name__ == '__main__':
@@ -31,7 +31,7 @@ if __name__ == '__main__':
     parser.add_argument('--config', type=str, default='config',
                         help='config file name')
     parser.add_argument('--mode', type=str, default='train',
-                        help='Mode (train/evaluate/predict)')
+                        help='Mode (train/test/train_and_evaluate)')
     args = parser.parse_args()
 
     tf.logging._logger.setLevel(logging.INFO)
