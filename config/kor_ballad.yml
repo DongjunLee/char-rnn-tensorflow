@@ -7,10 +7,10 @@ model:
   log_dir: 'logs'
   num_layers: 3
   output_keep_prob: 0.8
-  rnn_size: 512,
+  rnn_size: 512
   seq_length: 100
 train:
-  train_steps: 100000
+  train_steps: 200000
   model_dir: 'ballad_checkpoints'
   save_every: 1000
   learning_rate: 0.001

@@ -64,8 +64,8 @@ class TextLoader():
         self.X = xdata
         self.y = ydata
 
-        train_length = int(len(self.X) * train_size)
-        test_length = int(len(self.X) * test_size)
+        train_length = int(len(self.X) / self.seq_length * train_size) * self.seq_length
+        test_length = int(len(self.X) / self.seq_length * test_size) * self.seq_length
 
         train_X = self.X[train_length:]
         train_y = self.y[train_length:]
