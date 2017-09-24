@@ -18,7 +18,9 @@ def experiment_fn(run_config, params):
             params=params,
             config=run_config)
 
-    data_loader = TextLoader(Config.data.data_dir, params.batch_size, params.seq_length)
+    data_loader = TextLoader(Config.data.data_dir,
+            batch_size=params.batch_size,
+            seq_length=params.seq_length)
     Config.data.vocab_size = data_loader.vocab_size
 
     train_X, test_X, train_y, test_y = data_loader.make_train_and_test_set()

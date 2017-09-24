@@ -7,7 +7,7 @@ import numpy as np
 
 class TextLoader():
 
-    def __init__(self, data_dir, batch_size, seq_length, encoding='utf-8'):
+    def __init__(self, data_dir, batch_size=None, seq_length=None, encoding='utf-8'):
         self.data_dir = data_dir
         self.batch_size = batch_size
         self.seq_length = seq_length
@@ -43,8 +43,6 @@ class TextLoader():
         self.vocab_size = len(self.chars)
         self.vocab = dict(zip(self.chars, range(len(self.chars))))
         self.tensor = np.load(tensor_file)
-        self.num_batches = int(self.tensor.size / (self.batch_size *
-                                                   self.seq_length))
 
     def make_train_and_test_set(self, train_size=0.8, test_size=0.2):
         self.num_batches = int(self.tensor.size / (self.batch_size *

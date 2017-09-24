@@ -12,11 +12,20 @@ class CharRNN:
 
     def model_fn(self, mode, features, labels, params):
         self.mode = mode
-        self.input_data = features
-        self.targets = labels
         self.params = params
 
+        self.input_data = features
+        self.targets = labels
+
+        if type(features) == dict:
+            self.input_data = features["input_data"]
+
         self.build_graph()
+
+        if mode == tf.estimator.ModeKeys.PREDICT:
+            return tf.estimator.EstimatorSpec(
+                mode=mode,
+                predictions={"probs": self.probs})
 
         return tf.estimator.EstimatorSpec(
             mode=mode,
@@ -30,8 +39,12 @@ class CharRNN:
         self._create_rnn_cell()
         self._create_inferece()
         self._create_predictions()
-        self._create_loss()
-        self._creat_train_op()
+
+        if self.mode == tf.estimator.ModeKeys.PREDICT:
+            pass
+        else:
+            self._create_loss()
+            self._creat_train_op()
 
     def _create_embedding(self):
         self.embedding = tf.get_variable("embedding", [Config.data.vocab_size, self.params.rnn_size])

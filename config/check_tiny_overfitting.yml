@@ -11,7 +11,7 @@ model:
   seq_length: 20
 train:
   train_steps: 10000
-  model_dir: 'checkpoints'
+  model_dir: 'tiny_checkpoints'
   save_every: 1
   learning_rate: 0.001
   loss_hook_n_iter: 100
