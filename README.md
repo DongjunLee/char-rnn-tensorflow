@@ -18,7 +18,7 @@ This code implements multi-layer Recurrent Neural Network (RNN, LSTM, and GRU) f
 
 ## Config
 
-check_tiny.yml
+example: check_tiny.yml
 
 ```yml
 data:
@@ -61,6 +61,9 @@ After training, generate Korean Samhangsi.
 ```bash
 python generator.py --config kor_ballad --word 삼행시
 ```
+
+
+### Samhangsi Examples
 
 - 삼행시
 
