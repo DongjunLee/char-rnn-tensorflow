@@ -43,7 +43,7 @@ train:
 
 ## Usage
 
-First, check is the model is valid. 
+First, check if the model is valid. 
 
 ```bash
 python main.py --config check_tiny --mode train
