@@ -43,10 +43,10 @@ train:
 
 ## Usage
 
-First, need to check this model working. 
+First, check if the model is valid. 
 
 ```bash
-python main.py --config check_with_tiny --mode train
+python main.py --config check_tiny --mode train
 ```
 
 Then, train the model
