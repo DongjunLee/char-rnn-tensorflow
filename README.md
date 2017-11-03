@@ -5,7 +5,7 @@ This code implements multi-layer Recurrent Neural Network (RNN, LSTM, and GRU) f
 ## Requirements
 
 - Python 3.6
-- TensorFlow >= 1.3
+- TensorFlow 1.4
 - hb-config
 
 ## Features
